@@ -17,10 +17,10 @@
                                 <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach($checklists as $checklist)
                                     <tr>
-                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
-                                            <a href="{{ route('checklist.show', $checklist->id) }}"
-                                               class="hover:text-indigo-700 hover:underline-indigo-700"
-                                            >{{$checklist->name}}</a>
+                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium">
+                                            <a class="hover:text-indigo-700" href="{{ route('checklist.show', $checklist->id) }}">
+                                                {{$checklist->name}}
+                                            </a>
                                         </td>
                                         <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
                                             <button wire:click="confirmDeleteChecklist({{$checklist->id}})" class="text-red-600 hover:text-red-900">Delete</button>

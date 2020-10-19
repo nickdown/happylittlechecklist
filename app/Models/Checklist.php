@@ -17,4 +17,14 @@ class Checklist extends Model
     {
         return $this->hasMany(Task::class);
     }
+
+    public function getTotalTasksAttribute()
+    {
+        return $this->tasks()->count();
+    }
+
+    public function getCompletedTasksAttribute()
+    {
+        return $this->tasks()->where('completed', "=", 1)->count();
+    }
 }

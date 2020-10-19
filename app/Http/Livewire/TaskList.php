@@ -12,6 +12,7 @@ class TaskList extends Component
     public $checklist;
     public $tasks;
     public $confirmingTaskDeletion = false;
+    public $confirmingResetTaskCompletions = false;
     public $taskToDelete;
 
     protected $listeners = ['taskAdded' => 'loadTasks'];
@@ -39,13 +40,33 @@ class TaskList extends Component
     public function toggleTask($taskId)
     {
         $task = Task::query()->find($taskId); // or fail?
-        // confirm belongs to current team?
+        // TODO: confirm belongs to current team?
 
         $newCompletedValue = $task->completed ? false : true;
         $task->completed= $newCompletedValue;
         $task->save();
 
         $this->loadTasks();
+    }
+
+    public function confirmResetTaskCompletions()
+    {
+        $this->confirmingResetTaskCompletions = true;
+    }
+
+    public function abortResetTaskCompletions()
+    {
+        $this->confirmingResetTaskCompletions = false;
+    }
+
+    public function resetTaskCompletions()
+    {
+        Task::query()->where('checklist_id', '=', $this->checklist->id)->update([
+            'completed' => false
+        ]);
+
+        $this->loadTasks();
+        $this->confirmingResetTaskCompletions = false;
     }
 
     public function mount(Request $request)

@@ -21,6 +21,7 @@ class TaskForm extends Component
         ]);
 
         $this->name = "";
+        $this->emit('taskAdded');
     }
     public function render()
     {

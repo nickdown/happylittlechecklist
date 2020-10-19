@@ -8,6 +8,30 @@ use Livewire\Component;
 class TaskList extends Component
 {
     public $tasks;
+    public $confirmingTaskDeletion = false;
+    public $taskToDelete;
+
+    protected $listeners = ['taskAdded' => 'loadTasks'];
+
+    public function confirmDeleteTask($id)
+    {
+        $this->taskToDelete = Task::query()->find($id); // confirm belongs to currentTeam?
+        $this->confirmingTaskDeletion = true;
+    }
+
+    public function abortDeleteTask()
+    {
+        $this->taskToDelete = null;
+        $this->confirmingTaskDeletion = false;
+    }
+
+    public function deleteTask()
+    {
+        $this->taskToDelete->delete();
+
+        $this->confirmingTaskDeletion = false;
+        $this->loadTasks();
+    }
 
     public function toggleTask($taskId)
     {
@@ -28,7 +52,7 @@ class TaskList extends Component
         return view('livewire.task-list');
     }
 
-    protected function loadTasks()
+    public function loadTasks()
     {
         $this->tasks = auth()->user()->currentTeam->tasks()->get();
     }

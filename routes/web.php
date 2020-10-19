@@ -17,10 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/tasks', function () {
-    return view('tasks');
-})->name('tasks');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::view('/dashboard', 'dashboard')->name('dashboard');
+    Route::view('/checklists/{checklist}', 'tasks')->name('checklist.show');
+    Route::view('/checklists', 'checklists')->name('checklists');
+});

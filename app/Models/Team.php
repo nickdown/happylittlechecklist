@@ -39,8 +39,8 @@ class Team extends JetstreamTeam
         'deleted' => TeamDeleted::class,
     ];
 
-    public function tasks()
+    public function checklists()
     {
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Checklist::class);
     }
 }

@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Checklist;
 use App\Models\Task;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class TaskList extends Component
 {
+    public $checklist;
     public $tasks;
     public $confirmingTaskDeletion = false;
     public $taskToDelete;
@@ -45,15 +48,21 @@ class TaskList extends Component
         $this->loadTasks();
     }
 
+    public function mount(Request $request)
+    {
+        // TODO: confirm checklist is owned by current team
+        $this->checklist = Checklist::query()->find($request->checklist);
+    }
+
+    public function loadTasks()
+    {
+        $this->tasks = $this->checklist->tasks()->get();
+    }
+
     public function render()
     {
         $this->loadTasks();
 
         return view('livewire.task-list');
-    }
-
-    public function loadTasks()
-    {
-        $this->tasks = auth()->user()->currentTeam->tasks()->get();
     }
 }

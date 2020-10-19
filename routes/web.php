@@ -11,7 +11,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/checklists/{checklist}', function (Request $request) {
         // TODO: checklist belongs to currentTeam
-        $name = Checklist::find($request->checklist)->name;
+        $name = Checklist::query()->find($request->checklist)->name;
 
         return view('tasks', compact('name'));
     })->name('checklist.show');

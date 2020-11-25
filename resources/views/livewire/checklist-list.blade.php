@@ -18,7 +18,7 @@
                                 @foreach($checklists as $checklist)
                                     <tr>
                                         <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium">
-                                            <a class="hover:text-indigo-700" href="{{ route('checklist.show', $checklist->id) }}">
+                                            <a class="hover:text-indigo-700 hover:underline" href="{{ route('checklist.show', $checklist->id) }}">
                                                 {{$checklist->name}}
                                             </a>
                                         </td>

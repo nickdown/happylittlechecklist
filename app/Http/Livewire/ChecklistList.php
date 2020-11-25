@@ -22,7 +22,7 @@ class ChecklistList extends Component
     public function abortDeleteChecklist()
     {
         $this->checklistToDelete = null;
-        $this->confirmChecklistDeletion = false;
+        $this->confirmingChecklistDeletion = false;
     }
 
     public function deleteChecklist()

@@ -49,7 +49,7 @@
                                 <thead>
                                 <tr>
                                     <th class="px-6 py-3 bg-gray-50 w-8"></th>
-                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-lg leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         Name
                                     </th>
                                     <th class="px-6 py-3 bg-gray-50"></th>

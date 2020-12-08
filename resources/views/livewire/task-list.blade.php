@@ -65,7 +65,7 @@
                                                 type="checkbox"
                                                 class="form-checkbox h-4 w-4 text-indigo-600">
                                         </td>
-                                        <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+                                        <td class="px-6 py-4 whitespace-no-wrap text-xl leading-5 font-medium text-gray-900">
                                             {{$task->name}}
                                         </td>
                                         <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">

@@ -3,10 +3,13 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class AuthenticatedUserHomepageRedirectionTest extends TestCase
 {
+    use RefreshDatabase;
+
     /** @test */
     public function guest_user_can_view_marketing_homepage()
     {

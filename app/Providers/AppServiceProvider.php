@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Laravel\Jetstream\Jetstream;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Jetstream::useUserModel('App\Models\User');
+        Jetstream::useTeamModel('App\Models\Team');
+        Jetstream::useMembershipModel('App\Models\Membership');
     }
 }
